@@ -1,9 +1,9 @@
-const URL = 'http://localhost:3001/';
+const { REACT_APP_BASE_URL } = process.env;
 
 // PORTFOLIO REQUESTS
 
 export const createNewPortfolioRequest = (newPortfolioName) => {
-    return fetch(`${URL}portfolios`, {
+    return fetch(`${REACT_APP_BASE_URL}portfolios`, {
         method: 'POST',
         headers: {
             'Authorization': `Bearer ${localStorage.token}`,
@@ -15,7 +15,7 @@ export const createNewPortfolioRequest = (newPortfolioName) => {
 };
 
 export const getPortfolioRequest = (id) => {
-    return fetch(`${URL}portfolios/${id}`, {
+    return fetch(`${REACT_APP_BASE_URL}portfolios/${id}`, {
         headers: {
             'Authorization': `Bearer ${localStorage.token}`,
             'Content-Type': 'application/json'
@@ -25,7 +25,7 @@ export const getPortfolioRequest = (id) => {
 };
 
 export const getPortfoliosRequest = () => {
-    return fetch(`${URL}portfolios`, {
+    return fetch(`${REACT_APP_BASE_URL}portfolios`, {
         headers: {
             'Authorization': `Bearer ${localStorage.token}`,
             'Content-Type': 'application/json'
@@ -37,7 +37,7 @@ export const getPortfoliosRequest = () => {
 // ACTIVITY REQUESTS
 
 export const createNewActivityRequest = (activityFormData) => {
-    return fetch(`${URL}activities`, {
+    return fetch(`${REACT_APP_BASE_URL}activities`, {
         method: 'POST',
         headers: {
             'Authorization': `Bearer ${localStorage.token}`,
@@ -49,7 +49,7 @@ export const createNewActivityRequest = (activityFormData) => {
 };
 
 export const sellActivityRequest = (activityFormData) => {
-    return fetch(`${URL}sell`, {
+    return fetch(`${REACT_APP_BASE_URL}sell`, {
         method: 'POST',
         headers: {
             'Authorization': `Bearer ${localStorage.token}`,
@@ -63,7 +63,7 @@ export const sellActivityRequest = (activityFormData) => {
 // STOCK REQUESTS
 
 export const getStockSymbolsRequest = () => {
-    return fetch(`${URL}stocks`, {
+    return fetch(`${REACT_APP_BASE_URL}stocks`, {
         headers: {
             'Authorization': `Bearer ${localStorage.token}`
         }
@@ -72,7 +72,7 @@ export const getStockSymbolsRequest = () => {
 }
 
 export const getStockDataRequest = (query) => {
-    return fetch(`${URL}stocks/${query}`, {
+    return fetch(`${REACT_APP_BASE_URL}stocks/${query}`, {
         headers: {
             'Authorization': `Bearer ${localStorage.token}`,
             'Content-Type': 'application/json'
@@ -82,7 +82,7 @@ export const getStockDataRequest = (query) => {
 };
 
 export const getStockQuotesRequest = (queries) => {
-    return fetch(`${URL}quotes/${queries}`, {
+    return fetch(`${REACT_APP_BASE_URL}quotes/${queries}`, {
         headers: {
             'Authorization': `Bearer ${localStorage.token}`,
             'Content-Type': 'application/json'
@@ -92,7 +92,7 @@ export const getStockQuotesRequest = (queries) => {
 };
 
 export const getIntradayPricesRequest = (query, openPrice) => {
-    return fetch(`${URL}intraday/${query}`, {
+    return fetch(`${REACT_APP_BASE_URL}intraday/${query}`, {
         headers: {
             'Authorization': `Bearer ${localStorage.token}`,
             'openPrice': openPrice
@@ -102,7 +102,7 @@ export const getIntradayPricesRequest = (query, openPrice) => {
 }
 
 export const getWeekPricesRequest = (query) => {
-    return fetch(`${URL}week/${query}`, {
+    return fetch(`${REACT_APP_BASE_URL}week/${query}`, {
         headers: {
             'Authorization': `Bearer ${localStorage.token}`
         }
@@ -111,7 +111,7 @@ export const getWeekPricesRequest = (query) => {
 }
 
 export const getHistoricalPricesRequest = (query, periodType, period) => {
-    return fetch(`${URL}historical/${query}`, {
+    return fetch(`${REACT_APP_BASE_URL}historical/${query}`, {
         headers: {
             'Authorization': `Bearer ${localStorage.token}`,
             periodType: periodType,
@@ -125,7 +125,7 @@ export const getHistoricalPricesRequest = (query, periodType, period) => {
 
 export const createFundRequest = (form) => {
     const category = form.category === 'Deposit' ? 'deposit' : 'withdraw'
-    return fetch(`${URL}${category}`, {
+    return fetch(`${REACT_APP_BASE_URL}${category}`, {
         method: 'POST',
         headers: {
             'Authorization': `Bearer ${localStorage.token}`,
