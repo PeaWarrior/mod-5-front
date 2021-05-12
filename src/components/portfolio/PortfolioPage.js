@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchPortfolio } from './portfolioActions';
-import { Container, Card, Row, Col, Button, ListGroup } from 'react-bootstrap';
+import { Container, Card, Row, Col, Button } from 'react-bootstrap';
 import PortfolioCard from './PortfolioCard';
 import PortfolioChart from './PortfolioChart';
 import StockListings from '../stock/StockListings';

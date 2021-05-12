@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Chart, Line } from 'react-chartjs-2';
-import { Row, Container, Button, Col } from 'react-bootstrap';
+import { Row, Container, Button } from 'react-bootstrap';
 import moment from 'moment';
 import { calculateChange } from './stockActions';
 import { setIntradayChart, setWeekChart, setHistoricalChart, setPrices, setBorderColor, verticleLinePlugin } from './stockChartActions';
@@ -118,7 +118,7 @@ export default function StockChart({ ticker, openPrice, lastPrice }) {
             dispatch(setBorderColor(borderColor));
         }
 
-    }, [lastTrade.price, openPrice, dispatch]);
+    }, [option, lastTrade.price, openPrice, dispatch]);
 
     useEffect(() => {
         if (option === 'intraday' && graphData.datasets[0].data.length) {
@@ -129,12 +129,12 @@ export default function StockChart({ ticker, openPrice, lastPrice }) {
                 time: moment().format('hh:mm A')
             }));
         }
-    }, [lastTrade.time, option, dispatch])
+    }, [lastTrade.time, lastTrade.price, option, dispatch])
 
     useEffect(() => {
         const price = display.price ? display.price : lastTrade.price;
         setCurrentChange(dispatch(calculateChange(price, graphData.datasets[0].data[0])));
-    }, [display.price, graphData.datasets, dispatch]);
+    }, [display.price, lastTrade.price, graphData.datasets, dispatch]);
 
     useEffect(() => {
         const plugin = dispatch(verticleLinePlugin());
@@ -142,7 +142,7 @@ export default function StockChart({ ticker, openPrice, lastPrice }) {
         return () => {
             Chart.pluginService.unregister(plugin);
         }
-    }, [])
+    }, [dispatch])
 
     const graphOptions = {
         animation: false,

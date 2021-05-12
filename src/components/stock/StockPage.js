@@ -15,7 +15,7 @@ export default function StockPage() {
         if (stockSymbols.length <= 0) {
             dispatch(fetchStockSymbols());
         }
-    }, [stockSymbols])
+    }, [dispatch, stockSymbols])
 
     return (
         <Container>

@@ -1,8 +1,10 @@
 import store from '../../store';
+const { REACT_APP_BASE_URL } = process.env;
 
 export const signup = () => {
     return function(dispatch) {
-        fetch('http://localhost:3001/signup', {
+        console.log(process.env)
+        fetch(`${REACT_APP_BASE_URL}signup`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -24,7 +26,7 @@ export const signup = () => {
 
 export const login = () => {
     return function(dispatch) {
-        fetch('http://localhost:3001/login', {
+        fetch(`${REACT_APP_BASE_URL}login`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -46,7 +48,7 @@ export const login = () => {
 
 export const autologin = () => {
     return function(dispatch) {
-        fetch('http://localhost:3001/autologin', {
+        fetch(`${REACT_APP_BASE_URL}autologin`, {
             headers: {
                 'Authorization': `Bearer ${localStorage.token}`,
                 'Content-Type': 'application/json'

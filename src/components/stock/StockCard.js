@@ -4,7 +4,6 @@ import { Accordion, Card, Container, Row, Col, Button } from 'react-bootstrap';
 import ActivityCard from '../activity/ActivityCard';
 import { calculateChange } from './stockActions';
 import ActivityForm from '../activity/ActivityForm';
-import { setCurrentPortfolio } from '../portfolio/portfolioActions';
 
 export default function StockCard({ id, name, ticker, shares, costBasis, average_price, realized, activities, lastTrade, lastPrice, openPrice }) {
     const dispatch = useDispatch();

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { Card, Container, Row, Col, Accordion, Button } from 'react-bootstrap';
+import { Card, Container, Row, Col, Button } from 'react-bootstrap';
 import FundCard from './FundCard';
 
 export default function FundListings() {

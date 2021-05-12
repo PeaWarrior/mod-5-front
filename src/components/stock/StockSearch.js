@@ -31,7 +31,7 @@ export default function StockSearch() {
 
             setSuggestions(suggestedSymbols);
         }
-    }, [query])
+    }, [stockSymbols, query])
 
     const handleSubmit = event => {
         event.preventDefault();
